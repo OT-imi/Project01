@@ -6,9 +6,9 @@ export function CountryContextProvider({ children }) {
   const [selectedCountry, setSelectedCountry] = useState('NIG');
 
   return (
-    <CountryContext.Provider value={{ selectedCountry, setSelectedCountry }}>
+    <CountryContext value={{ selectedCountry, setSelectedCountry }}>
       {children}
-    </CountryContext.Provider>
+    </CountryContext>
   );
 }
 

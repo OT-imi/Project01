@@ -8,7 +8,8 @@ const style = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 10,
     backgroundColor: 'fff',
-    marginTop: 10,
+    // marginTop: 10,
+    top: 16,
   },
   flagStyle: {
     width: 30,
@@ -26,21 +27,21 @@ const style = StyleSheet.create({
     borderColor: '#006B3F',
   },
   picker: {
-    // backgroundColor: '#006B3F',
     borderColor: '#006B3F',
-    borderRadius: 0,
+    borderRadius: 4,
     top: 0,
-    right: 0,
     height: 2,
     width: 150,
   },
   dropdown: {
     width: 150,
     color: '#006B3F',
+    right: 4,
   },
   text: {
     color: 'green',
     fontWeight: 'bold',
+    paddingLeft: 7.5,
   },
 });
 

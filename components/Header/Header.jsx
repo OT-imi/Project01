@@ -1,9 +1,9 @@
-import hisLogo from '../../assets/logo.png';
+import hisLogo from '../../assets/images/logo.png';
 import { Image, View } from 'react-native';
-import naijaFlag from '../../assets/naija.png';
-import canadaFlag from '../../assets/canada.png';
-import ghanaFlag from '../../assets/ghana.png';
-import krwFlag from '../../assets/krw.png';
+import naijaFlag from '../../assets/images/naija.png';
+import canadaFlag from '../../assets/images/canada.png';
+import ghanaFlag from '../../assets/images/ghana.png';
+import krwFlag from '../../assets/images/krw.png';
 import { useContext, useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CountryContext from '../../store/CountryContextProvider.jsx';
@@ -11,22 +11,22 @@ import style from './style.js';
 
 const allCountries = [
   {
-    label: 'NIGERIA',
+    label: 'Nigeria',
     icon: () => <Image source={naijaFlag} style={style.flagStyle} />,
     value: 'NIG',
   },
   {
-    label: 'CANADA',
+    label: 'Canada',
     icon: () => <Image source={canadaFlag} style={style.flagStyle} />,
     value: 'CND',
   },
   {
-    label: 'GHANA',
+    label: 'Ghana',
     icon: () => <Image source={ghanaFlag} style={style.flagStyle} />,
     value: 'GHN',
   },
   {
-    label: 'SOUTH KOREA',
+    label: 'South Korea',
     icon: () => <Image source={krwFlag} style={style.flagStyle} />,
     value: 'SKR',
   },
