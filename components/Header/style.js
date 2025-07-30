@@ -8,8 +8,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 10,
     backgroundColor: 'fff',
-    // marginTop: 10,
-    top: 16,
+    top: 13.5,
   },
   flagStyle: {
     width: 30,
@@ -17,20 +16,19 @@ const style = StyleSheet.create({
   },
 
   logo: {
-    width: 150,
-    height: 40,
-    resizeMode: 'contain',
+    width: 148,
+    height: 45,
+    resizeMode: 'cover',
   },
   pickerContainer: {
     width: 150,
     zIndex: 1000,
+    color: '#006B3F',
     borderColor: '#006B3F',
   },
   picker: {
     borderColor: '#006B3F',
     borderRadius: 4,
-    top: 0,
-    height: 2,
     width: 150,
   },
   dropdown: {
@@ -39,10 +37,10 @@ const style = StyleSheet.create({
     right: 4,
   },
   text: {
-    color: 'green',
+    color: '#006B3F',
     fontWeight: 'bold',
-    paddingLeft: 7.5,
+    paddingLeft: 4.5,
+    opacity: 0.6,
   },
 });
-
 export default style;

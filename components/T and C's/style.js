@@ -1,13 +1,24 @@
 import { StyleSheet } from 'react-native';
 
 const style = StyleSheet.create({
+  container: {
+    top: 70,
+    fontSize: 2,
+    flex: 1,
+    left: 20,
+  },
+  arrowPointer: {
+    bottom: 24,
+    width: 28,
+    height: 28,
+  },
   text: {
     fontSize: 2,
   },
   proceedText: {
     color: '#f1f1f1',
     fontSize: 13,
-    fontWeight: 500, // alignItems: 'center',
+    fontWeight: 500,
     borderColor: '#545454',
     borderRadius: 4,
     borderTopStartRadius: 0.5,

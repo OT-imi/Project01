@@ -46,7 +46,6 @@ function Header() {
         items={allCountries}
         setOpen={setOpen}
         setValue={setSelectedCountry}
-        // setItems={setItems}
         showTickIcon={false}
         style={style.picker}
         placeholder="Select a Country"

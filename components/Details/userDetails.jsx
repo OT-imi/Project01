@@ -8,6 +8,8 @@ import {
   ScrollView,
 } from 'react-native';
 import style from './style.js';
+import AccountButton from '../custom/AccountButton.jsx';
+import ProceedButton from '../custom/ProceedButton.jsx';
 
 export default function UserDetails({ navigation }) {
   const [isFocused, setIsFocused] = useState(false);
@@ -16,13 +18,41 @@ export default function UserDetails({ navigation }) {
   const [value, setValue] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [selected, setSelected] = useState(null);
 
   const navigateToNext = () => {
     navigation.navigate("T and C's");
+    console.log('Navigating to Terms and Conditions');
   };
 
   let emptyValue =
-    value.trim() === '' || emailAddress === '' || phoneNumber.trim() === '';
+    value.trim() === '' ||
+    emailAddress === '' ||
+    phoneNumber.trim() === '' ||
+    !selected;
+
+  const accountTypes = [
+    {
+      id: 'personal',
+      label: 'Personal Account',
+    },
+    {
+      id: 'savings',
+
+      label: 'Savings Account',
+    },
+    {
+      id: 'current',
+
+      label: 'Current Account',
+    },
+  ];
+
+  const isSelected = id => selected === id;
+
+  function handleSelect(id) {
+    setSelected(id);
+  }
 
   return (
     <ScrollView showsVerticalScrollIndicator>
@@ -82,24 +112,35 @@ export default function UserDetails({ navigation }) {
             <View>
               <Text style={style.accountText}>SELECT ACCOUNT TYPE:</Text>
               <View style={style.buttonsContainer}>
-                <TouchableOpacity style={style.accountButton}>
-                  <Text style={style.buttonText}>PERSONAL ACCOUNT</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={style.accountButton}>
-                  <Text style={style.buttonText}>SAVINGS ACCOUNT</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={style.accountButton}>
-                  <Text style={style.buttonText}>CURRENT ACCOUNT</Text>
-                </TouchableOpacity>
+                <AccountButton
+                  account="PA"
+                  accountType={"PERSONAL"}
+                  setSelected={setSelected}
+                  selected={selected}
+                />
+                <AccountButton
+                  account="SA"
+                  accountType={"SAVINGS"}
+                  setSelected={setSelected}
+                  selected={selected}
+                />
+                <AccountButton
+                  account="CA"
+                  accountType={"CURRENT"}
+                  setSelected={setSelected}
+                  selected={selected}
+                />
+                {/* I built this **** <AccountButton account="AA" accountType="AUTO" setSelected={setSelected} selected={selected}/> */}
               </View>
             </View>
-            <TouchableOpacity
+            <ProceedButton
+              buttonStyle={emptyValue ? style.buttonNotReady : style.button}
+              textStyle={style.proceedText}
+              label={'Proceed'}
               disabled={emptyValue}
-              style={emptyValue ? style.buttonNotReady : style.button}
               onPress={() => navigateToNext()}
-            >
-              <Text style={style.proceedText}>Proceed</Text>
-            </TouchableOpacity>
+              // accessibilityLabel="Proceed to Terms and Conditions"
+            />
           </View>
         </View>
       </SafeAreaView>
