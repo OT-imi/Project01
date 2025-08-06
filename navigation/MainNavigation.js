@@ -6,6 +6,7 @@ import userDetails from '../components/Details/userDetails.jsx';
 import OTPVerify from '../components/Verification/otpVerify.jsx';
 import { NavigationContainer } from '@react-navigation/native';
 import TermsConditions from "../components/T and C's/TermsConditions.jsx";
+import EmailVerify from '../components/Verification/emailVerify.jsx';
 
 const Stack = createStackNavigator();
 
@@ -22,8 +23,12 @@ function MainNavigation() {
       >
         <Stack.Screen name={Routes.WelcomeScreen} component={WelcomeScreen} />
         <Stack.Screen name={Routes.UserDetails} component={userDetails} />
-        <Stack.Screen name={Routes.TermsConditions} component={TermsConditions}/>
+        <Stack.Screen
+          name={Routes.TermsConditions}
+          component={TermsConditions}
+        />
         <Stack.Screen name={Routes.OTPVerify} component={OTPVerify} />
+        <Stack.Screen name={Routes.EmailVerify} component={EmailVerify} />
       </Stack.Navigator>
     </NavigationContainer>
   );

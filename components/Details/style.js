@@ -88,7 +88,6 @@ const style = StyleSheet.create({
     paddingVertical: 5,
     borderWidth: 1,
   },
-
   buttonText: {
     color: '#545454',
     fontSize: 13,
@@ -107,7 +106,7 @@ const style = StyleSheet.create({
     borderRadius: 4,
     borderTopStartRadius: 0.5,
     paddingTop: 10,
-    fontFamily: 'Roboto',
+    fontFamily: 'Nunito-Regular',
   },
   buttonNotReady: {
     backgroundColor: '#006B3F',
@@ -133,20 +132,11 @@ const style = StyleSheet.create({
     marginRight: 60,
     width: 'auto',
     height: 62,
-    top: 0,
+    top: 10,
   },
   accountText: {
     bottom: 9,
     alignItems: 'center',
-  },
-  buttonNotReadyText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 500,
-    alignItems: 'center',
-    fontStyle: 'medium',
-    paddingTop: 10,
-    fontFamily: 'Avenir',
   },
   buttonsContainer: {
     flexWrap: 'wrap',

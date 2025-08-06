@@ -15,7 +15,7 @@ const style = StyleSheet.create({
     marginRight: 10,
   },
   image: {
-    marginTop: 22,
+    marginTop: 24,
   },
   otpInput: {
     textAlign: 'center',
@@ -90,13 +90,13 @@ const style = StyleSheet.create({
     marginTop: 40,
   },
   msg: {
-    fontSize: 16,
+    fontSize: 15,
     color: '#001E28',
-    fontWeight: '200',
-    width: 372,
+    fontWeight: '400',
+    width: 290,
     height: 42,
     textAlign: 'center',
-    marginTop: 25,
+    marginTop: 30,
   },
 
   buttonResend: {
@@ -150,6 +150,7 @@ const style = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 10,
+    marginVertical: 10,
     alignItems: 'center',
     marginTop: 20,
     height: 64,
@@ -173,6 +174,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     flex: 1,
+    height: 307.11,
     backgroundColor: 'rgba(0, 0, 0, 0.59)', // semi-transparent overlay
   },
   modalContent: {
@@ -180,8 +182,8 @@ const style = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#F5F5F7',
     borderRadius: 12,
-    width: '90%',
-    height: 307,
+    width:320,
+    height: 307.11,
     shadowColor: '#000',
     shadowOpacity: 0.25,
     shadowRadius: 8,
@@ -189,19 +191,17 @@ const style = StyleSheet.create({
   },
   confirmTxt: {
     color: '#000B0F',
-    fontSize: 22,
+    fontSize: 21,
     fontWeight: 500,
-    top: 21,
+    top: 24,
   },
   modalButton: {
     backgroundColor: '#006B3F',
     paddingVertical: 12,
-    paddingHorizontal: 120,
+    paddingHorizontal: 118,
     borderRadius: 10,
-    marginVertical: 10,
-    alignItems: 'center',
     height: 64,
-    marginTop: 40,
+    marginTop: 30,
   },
   modalButtonText: {
     fontWeight: '600',

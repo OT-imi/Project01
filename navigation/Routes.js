@@ -3,4 +3,5 @@ export const Routes = {
   UserDetails: 'Details',
   TermsConditions: "T and C's",
   OTPVerify: 'OtpVerify',
+  EmailVerify: 'Verify Email',
 };

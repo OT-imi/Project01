@@ -32,18 +32,31 @@ export default function UserDetails({ navigation }) {
     updateDetails('accountType', selected);
     navigation.navigate("T and C's");
   }
-  const validEmail = emailAddress.includes('@') && emailAddress.includes('.');
+  function handleNumericChange(text) {
+    setValue(text.replace(/[^0-9/g]/, ''));
+  }
+
+  function handlePhoneChange(text) {
+    setPhoneNumber(text.replace(/[^0-9/]/g, ''));
+  }
+
+  const validEmail = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const validPhoneNumber = phoneNumber.trim().length >= 10;
   const validValue = value.trim().length >= 10;
   const isSelected = !!selected;
 
-  let emptyValue =
+  let emptyValues =
     value.trim() === '' ||
     emailAddress === '' ||
     phoneNumber.trim() === '' ||
     !selected;
 
-  const allValid = validEmail && validPhoneNumber && validValue && isSelected;
+  const invalid =
+    !validEmail(emailAddress) ||
+    !isSelected ||
+    !validPhoneNumber ||
+    !validValue;
+  const isValidationComplete = invalid || emptyValues;
 
   return (
     <ScrollView showsVerticalScrollIndicator>
@@ -65,13 +78,15 @@ export default function UserDetails({ navigation }) {
                   style={style.textInput}
                   value={value}
                   placeholderTextColor="black"
-                  onChangeText={setValue}
+                  maxLength={11}
                   keyboardType="number-pad"
-                  inputMode="numeric"
                   onBlur={() => setIsFocused(false)}
                   onFocus={() => setIsFocused(true)}
+                  onChangeText={handleNumericChange}
                 />
-                {/* {submitted && !validValue && <Text style={style.error}>Please enter a valid BVN</Text>} */}
+                {submitted && !validValue && (
+                  <Text style={style.error}>Please enter a valid BVN</Text>
+                )}
                 <Text style={style.textCode}>
                   Dial *565*0# on your registered number to get your BVN.
                 </Text>
@@ -87,15 +102,14 @@ export default function UserDetails({ navigation }) {
                   value={emailAddress}
                   onChangeText={setEmailAddress}
                   keyboardType="email-address"
-                  inputMode="email"
                   onBlur={() => setIsEmailFocused(false)}
                   onFocus={() => setIsEmailFocused(true)}
                 />
-                {/* {submitted && !validEmail && (
+                {submitted && !validEmail(emailAddress) && (
                   <Text style={style.error}>
                     Please enter a valid email address
                   </Text>
-                )} */}
+                )}
               </View>
               <View style={style.numberContainer}>
                 {(isNumberFocused || phoneNumber) && (
@@ -106,16 +120,17 @@ export default function UserDetails({ navigation }) {
                   placeholderTextColor="black"
                   style={style.textInput}
                   value={phoneNumber}
-                  onChangeText={setPhoneNumber}
+                  maxLength={11}
+                  onChangeText={handlePhoneChange}
                   keyboardType="phone-pad"
-                  inputMode="tel"
-                  textContentType="telephoneNumber"
                   onBlur={() => setIsNumberFocused(false)}
                   onFocus={() => setIsNumberFocused(true)}
                 />
-                {/* {submitted && !validPhoneNumber && (
-                  <Text style={style.error}>Phone number must be ten digits</Text>
-                )} */}
+                {submitted && !validPhoneNumber && (
+                  <Text style={style.error}>
+                    Phone number must be ten digits
+                  </Text>
+                )}
               </View>
               <View>
                 <Text style={style.accountText}>SELECT ACCOUNT TYPE:</Text>
@@ -143,10 +158,12 @@ export default function UserDetails({ navigation }) {
               </View>
             </View>
             <ProceedButton
-              buttonStyle={emptyValue ? style.buttonNotReady : style.button}
+              buttonStyle={
+                isValidationComplete ? style.buttonNotReady : style.button
+              }
               textStyle={style.proceedText}
               label={'Proceed'}
-              disabled={allValid || emptyValue}
+              disabled={isValidationComplete}
               onPress={() => handleContinue()}
               // accessibilityLabel="Proceed to Terms and Conditions"
             />

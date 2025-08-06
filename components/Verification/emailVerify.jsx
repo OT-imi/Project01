@@ -17,12 +17,12 @@ import UserContext from '../../store/UserDetailProvider.jsx';
 import verifiedImg from '../../assets/images/successfulOTPValidationImage.png';
 import VerificationModal from './SuccessVerificationModal.jsx';
 
-export default function OTPVerify({ navigation }) {
+export default function EmailVerify({ navigation }) {
   useEffect(() => {
-    let validOTP = Math.round(Math.random() * (9999 - 1111) + 1111);
-    validOTP = validOTP.toString();
-    console.log(validOTP);
-    setValidOTP(validOTP);
+    let generatedEmailOTP = Math.round(Math.random() * (9999 - 1111) + 1111);
+    generatedEmailOTP = generatedEmailOTP.toString();
+    console.log(generatedEmailOTP);
+    setValidOTP(generatedEmailOTP);
   }, []);
 
   const [otp, setOtp] = useState(['', '', '', '']);
@@ -54,7 +54,7 @@ export default function OTPVerify({ navigation }) {
     }
     console.log('Submitted OTP:', fullOtp);
     otpMatch(fullOtp);
-
+    // navigation.navigate('Details');
     // Example: navigation.navigate('SuccessScreen');
   }
   function handleKeyPress({ nativeEvent }, index) {
@@ -94,7 +94,7 @@ export default function OTPVerify({ navigation }) {
   }
   function handleModalClose() {
     setIsModalVisible(false);
-    navigation.navigate('Verify Email');
+    navigation.navigate('Welcome');
   }
   return (
     <SafeAreaView>
@@ -103,9 +103,9 @@ export default function OTPVerify({ navigation }) {
         buttonStyle={style.modalButton}
         buttonText={style.modalButtonText}
         handleClose={() => handleModalClose()}
-        headerText={'Confirmation Successful'}
+        headerText={'Confirmation successful'}
         message={
-          'Dear customer, your mobile number has been successfully confirmed.'
+          'Dear customer, your email address has been successfully confirmed.'
         }
         sourceImg={verifiedImg}
         alternateText={'Verification Success'}
@@ -115,7 +115,7 @@ export default function OTPVerify({ navigation }) {
         imgStyle={style.image}
         headerStyle={style.confirmTxt}
         msgStyle={style.msg}
-        handlePress={() => handleModalClose()}
+        handlePress={() => navigation.navigate('Welcome')}
       />
       <View style={style.container}>
         <Pressable onPress={Keyboard.dismiss}>
@@ -126,15 +126,15 @@ export default function OTPVerify({ navigation }) {
               alt="Arrow pointing to the left"
             />
           </TouchableOpacity>
-          <Text style={style.verifyText}>Verify your moble number </Text>
+          <Text style={style.verifyText}>Verify Email Address</Text>
           <View style={style.wrap}>
             <Text style={style.text}>
-              Enter 4-digit code we have sent to your mobile number:
+              Enter 4-digit code we have sent to your email address:
               {` ${userDetails.email}`}
             </Text>
             {/*add context for the country codes for later verification(4 fields for number Input) */}
             <TouchableOpacity onPress={handleChangeEmail}>
-              <Text style={style.emailContent}>Not my number </Text>
+              <Text style={style.emailContent}>Not my email address</Text>
             </TouchableOpacity>
             <View style={style.codeContainer}>
               {otp.map((digit, index) => (
